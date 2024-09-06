@@ -12,85 +12,119 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
 	<style>
-	    body {
-	        font-family: 'Roboto', sans-serif;
-	        background-image: url('https://virtualbackgrounds.site/wp-content/uploads/2020/09/old-library.jpg');
-	        background-size: cover;
-	        background-attachment: fixed;
-	        background-repeat: no-repeat;
-	        background-color: #f8f9fa;
-	        color: #343a40;
-	        padding-top: 20px;
-	    }
-	    .container {
-	        max-width: 800px;
-	        background-color: rgba(255, 255, 255, 0.9);
-	        padding: 20px;
-	        border-radius: 8px;
-	        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	        margin: auto;
-	        margin-top: 5%;
-	    }
-	    h2 {
-	        font-weight: 500;
-	        margin-bottom: 30px;
-	    }
-	    .table {
-	        background-color: white;
-	    }
-	    .table th, .table td {
-	        border-top: none;
-	    }
-	    .table thead th {
-	        background-color: #e9ecef;
-	    }
-	    .table tbody tr:hover {
-	        background-color: #f1f1f1;
-	    }
-	    .btn-outline-primary, .btn-outline-success {
-	        transition: background-color 0.3s ease, color 0.3s ease;
-	        border-radius: 50px;
-	    }
-	    .btn-outline-primary:hover {
-	        background-color: #007bff;
-	        color: #fff;
-	    }
-	    .btn-outline-success:hover {
-	        background-color: #28a745;
-	        color: #fff;
-	    }
-	    .btn-group {
-	        display: flex;
-	        flex-wrap: wrap;
-	        gap: 10px;
-	        justify-content: center;
-	    }
-	    .btn-group a {
-	        flex: 1;
-	        text-align: center;
-	    }
-	    @media (max-width: 576px) {
-	        .btn-group a {
-	            flex: 100%;
-	        }
-	    }
+		body {
+			font-family: 'Roboto', sans-serif;
+			background-image: url('https://virtualbackgrounds.site/wp-content/uploads/2020/09/old-library.jpg');
+			background-size: cover;
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-color: #f8f9fa;
+			color: #343a40;
+			padding-top: 20px;
+		}
+	
+		.container {
+			max-width: 800px;
+			background-color: rgba(255, 255, 255, 0.9);
+			padding: 20px;
+			border-radius: 8px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			margin: auto;
+			margin-top: 5%;
+		}
+	
+		h2 {
+			font-weight: 500;
+			margin-bottom: 30px;
+			text-align: center;
+		}
+	
+		.table {
+			background-color: white;
+		}
+	
+		.table th,
+		.table td {
+			border-top: none;
+		}
+	
+		.table thead th {
+			background-color: #e9ecef;
+		}
+	
+		.table tbody tr:hover {
+			background-color: #f1f1f1;
+		}
+	
+		.btn-group-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+			gap: 10px;
+		}
+	
+		.btn-outline-primary,
+		.btn-outline-success {
+			transition: background-color 0.3s ease, color 0.3s ease;
+			border-radius: 50px;
+			text-align: center;
+		}
+	
+		.btn-outline-primary:hover {
+			background-color: #007bff;
+			color: #fff;
+		}
+	
+		.btn-outline-success:hover {
+			background-color: #28a745;
+			color: #fff;
+		}
+	
+		/* Centrar el botón regresar */
+		.center-button {
+			display: flex;
+			justify-content: center;
+			margin-top: 20px;
+		}
+	
+		.center-button .btn {
+			width: 100%;
+			max-width: 200px;
+		}
+	
+		/* Ajustes responsivos para móviles */
+		@media (max-width: 576px) {
+			.container {
+				padding: 10px;
+			}
+	
+			h2 {
+				font-size: 1.5rem;
+			}
+	
+			.table {
+				font-size: 0.9rem;
+			}
+	
+			.center-button .btn {
+				width: 100%;
+				max-width: 100%;
+			}
+		}
 	</style>
 </head>
 
 <body>
 	<div class="container p-4">
-		<center>
-			<h2>Usuarios</h2>
-		</center>
+		<h2>Usuarios</h2>
 		<div class="p-3">
-			<a th:href="@{/mostrarSolicitudes/formSolicitud}" class="btn btn-outline-primary btn-lg btn-block">Hacer
-				Solicitud</a>
+			<a th:href="@{/mostrarSolicitudes/formSolicitud}" class="btn btn-outline-primary btn-lg btn-block">Registro de Solicitud
+</a>
 		</div>
 		<div class="p-3">
-			<a th:href="@{/mostrarSolicitudUser}" class="btn btn-outline-primary btn-lg btn-block">Ver Solicitudes</a>
+			<a th:href="@{/mostrarSolicitudUser}" class="btn btn-outline-primary btn-lg btn-block">Solicitudes</a>
 		</div>
 
-		<div class="btn-group">
+		<div class="center-button">
 			<a th:href="@{/index}" class="btn btn-outline-success">Regresar</a>
 		</div>
 	</div>

@@ -1,118 +1,178 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html">
-    <title>Administradores</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html">
+	<title>Gestión de Administradores</title>
 	<link rel="icon"
-			href="https://static.vecteezy.com/system/resources/previews/006/952/251/non_2x/book-read-library-study-solid-line-icon-illustration-logo-template-suitable-for-many-purposes-vector.jpg"
-			type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-image: url('https://virtualbackgrounds.site/wp-content/uploads/2020/09/old-library.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            background-color: #f8f9fa;
-            color: #343a40;
-            padding-top: 20px;
-        }
-        .container {
-            max-width: 800px;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin: auto;
-            margin-top: 5%;
-        }
-        h2 {
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .table {
-            background-color: white;
-        }
-        .table th, .table td {
-            border-top: none;
-        }
-        .table thead th {
-            background-color: #e9ecef;
-        }
-        .table tbody tr:hover {
-            background-color: #f1f1f1;
-        }
-        .btn-outline-primary, .btn-outline-success {
-            transition: background-color 0.3s ease, color 0.3s ease;
-            border-radius: 50px;
-        }
-        .btn-outline-primary:hover {
-            background-color: #007bff;
-            color: #fff;
-        }
-        .btn-outline-success:hover {
-            background-color: #28a745;
-            color: #fff;
-        }
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-        .btn-group a {
-            flex: 1;
-            text-align: center;
-        }
-        @media (max-width: 576px) {
-            .btn-group a {
-                flex: 100%;
-            }
-        }
-    </style>
+		href="https://static.vecteezy.com/system/resources/previews/006/952/251/non_2x/book-read-library-study-solid-line-icon-illustration-logo-template-suitable-for-many-purposes-vector.jpg"
+		type="image/x-icon">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+	<style>
+		body {
+			font-family: 'Roboto', sans-serif;
+			background-image: url('https://virtualbackgrounds.site/wp-content/uploads/2020/09/old-library.jpg');
+			background-size: cover;
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-color: #f8f9fa;
+			color: #343a40;
+			padding-top: 20px;
+		}
+
+		.container {
+			max-width: 900px;
+			background-color: rgba(255, 255, 255, 0.9);
+			padding: 30px;
+			border-radius: 12px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			margin: auto;
+			margin-top: 5%;
+		}
+
+		h2 {
+			font-weight: 500;
+			margin-bottom: 40px;
+			text-align: center;
+		}
+
+		.table {
+			background-color: white;
+			border-radius: 8px;
+			overflow: hidden;
+		}
+
+		.table th,
+		.table td {
+			border-top: none;
+			padding: 12px;
+		}
+
+		.table thead th {
+			background-color: #e9ecef;
+			font-weight: bold;
+		}
+
+		.table tbody tr:hover {
+			background-color: #f1f1f1;
+		}
+
+		.btn-group-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+			gap: 15px;
+			margin-top: 20px;
+		}
+
+		.btn-outline-primary,
+		.btn-outline-success {
+			border-radius: 50px;
+			text-align: center;
+			font-size: 0.9rem;
+			font-weight: 500;
+			transition: background-color 0.3s ease, color 0.3s ease;
+		}
+
+		.btn-outline-primary {
+			border-color: #007bff;
+			color: #007bff;
+		}
+
+		.btn-outline-primary:hover {
+			background-color: #007bff;
+			color: #fff;
+		}
+
+		.btn-outline-success {
+			border-color: #28a745;
+			color: #28a745;
+		}
+
+		.btn-outline-success:hover {
+			background-color: #28a745;
+			color: #fff;
+		}
+
+		.center-button {
+			display: flex;
+			justify-content: center;
+			margin-top: 30px;
+		}
+
+		.center-button .btn {
+			width: 100%;
+			max-width: 200px;
+			font-weight: 600;
+		}
+
+		/* Ajustes responsivos para móviles */
+		@media (max-width: 576px) {
+			.container {
+				padding: 15px;
+			}
+
+			h2 {
+				font-size: 1.5rem;
+			}
+
+			.table {
+				font-size: 0.9rem;
+			}
+
+			.btn-group-grid {
+				gap: 10px;
+			}
+
+			.center-button .btn {
+				max-width: 100%;
+			}
+		}
+	</style>
 </head>
 
 <body>
-<div class="container p-4">
-    <center><h2>Administradores Registrados</h2></center>
-    <br>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Acciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="admin: ${listaAdmin}">
-            <td th:text="${admin.id}"></td>
-            <td th:text="${admin.nombre}"></td>
-            <td th:text="${admin.email}"></td>
-            <td>
-                <a class="btn btn-warning btn-sm" th:href="@{'/admin/editar' + '/' + ${admin.id}}">Editar</a>
-                &nbsp;
-                <a class="btn btn-danger btn-sm" th:href="@{'/admin/eliminar' + '/' + ${admin.id}}">Eliminar</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <br>
-    <div class="btn-group">
-        <a th:href="@{/mostrarAdmin/formAdmin}" class="btn btn-outline-primary">Insertar Administrador</a>
-        <a th:href="@{/mostrarUsuarios}" class="btn btn-outline-primary">Administrar Usuarios</a>
-        <a th:href="@{/mostrarSolicitudes}" class="btn btn-outline-primary">Administrar Solicitudes</a>
-        <a th:href="@{/mostrarLibros}" class="btn btn-outline-primary">Administrar Libros</a>
-        <a th:href="@{/index}" class="btn btn-outline-success">Regresar</a>
-    </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+	<div class="container p-4">
+		<h2>Gestión de Administradores</h2>
+		<br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Email</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="admin: ${listaAdmin}">
+					<td th:text="${admin.nombre}"></td>
+					<td th:text="${admin.email}"></td>
+					<td>
+						<a class="btn btn-warning btn-sm" th:href="@{'/admin/editar' + '/' + ${admin.id}}">Modificar</a>
+						&nbsp;
+						<a class="btn btn-danger btn-sm" th:href="@{'/admin/eliminar' + '/' + ${admin.id}}">Eliminar
+							Registro</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<div class="btn-group-grid">
+			<a th:href="@{/mostrarAdmin/formAdmin}" class="btn btn-outline-primary">Agregar Administrador</a>
+			<a th:href="@{/mostrarUsuarios}" class="btn btn-outline-primary">Gestión de Usuarios</a>
+			<a th:href="@{/mostrarSolicitudes}" class="btn btn-outline-primary">Gestión de Solicitudes</a>
+			<a th:href="@{/mostrarLibros}" class="btn btn-outline-primary">Gestión de Libros</a>
+		</div>
+		<div class="center-button">
+			<a th:href="@{/index}" class="btn btn-outline-success">Volver al Inicio</a>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </body>
+
 </html>
